@@ -1,7 +1,7 @@
 package functions
 
 import (
-	"github.com/alfredxing/calc/operators"
+	"github.com/vj1024/calc/operators"
 )
 
 var Names = map[string]bool{}

@@ -9,19 +9,16 @@ import (
 )
 
 import (
-	"github.com/alfredxing/calc/compute"
-)
-
-import (
-	"golang.org/x/crypto/ssh/terminal"
+	"github.com/vj1024/calc/compute"
+	"golang.org/x/term"
 )
 
 // Stores the state of the terminal before making it raw
-var regularState *terminal.State
+var regularState *term.State
 
 func main() {
 	if len(os.Args) > 1 {
-		input := strings.Replace(strings.Join(os.Args[1:], ""), " ", "", -1)
+		input := strings.ReplaceAll(strings.Join(os.Args[1:], ""), " ", "")
 		res, err := compute.Evaluate(input)
 		if err != nil {
 			return
@@ -31,13 +28,13 @@ func main() {
 	}
 
 	var err error
-	regularState, err = terminal.MakeRaw(0)
+	regularState, err = term.MakeRaw(0)
 	if err != nil {
 		panic(err)
 	}
-	defer terminal.Restore(0, regularState)
+	defer term.Restore(0, regularState)
 
-	term := terminal.NewTerminal(os.Stdin, "> ")
+	term := term.NewTerminal(os.Stdin, "> ")
 	term.AutoCompleteCallback = handleKey
 	for {
 		text, err := term.ReadLine()
@@ -49,7 +46,7 @@ func main() {
 			panic(err)
 		}
 
-		text = strings.Replace(text, " ", "", -1)
+		text = strings.ReplaceAll(text, " ", "")
 		if text == "exit" || text == "quit" {
 			break
 		}
@@ -72,7 +69,7 @@ func handleKey(line string, pos int, key rune) (newLine string, newPos int, ok b
 }
 
 func exit() {
-	terminal.Restore(0, regularState)
+	term.Restore(0, regularState)
 	fmt.Println()
 	os.Exit(0)
 }

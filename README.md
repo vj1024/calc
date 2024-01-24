@@ -1,20 +1,20 @@
 ## calc
 
-[![GoDoc](https://godoc.org/github.com/alfredxing/calc?status.svg)](https://godoc.org/github.com/alfredxing/calc) [![Build Status](https://travis-ci.org/alfredxing/calc.svg?branch=master)](https://travis-ci.org/alfredxing/calc)
+[![GoDoc](https://godoc.org/github.com/vj1024/calc?status.svg)](https://godoc.org/github.com/vj1024/calc) [![Build Status](https://travis-ci.org/vj1024/calc.svg?branch=master)](https://travis-ci.org/vj1024/calc)
 
 A simple, fast, and intuitive command-line calculator written in Go.
 
 ### Install
 Install calc as you would any other Go program:
 ```
-go get github.com/alfredxing/calc
+go get github.com/vj1024/calc
 ```
 
 ### Usage
 You can use calc in two ways: shell mode and command.
 
 #### Shell mode
-This is probably the mode you'll want to use. It's like the `python` shell or `irb`. The shell mode uses the `terminal` package provided by [`golang.org/x/crypto/ssh/terminal`](https://godoc.org/golang.org/x/crypto/ssh/terminal), which means it supports many of the shell features you know and love (like history, pasting, and the `exit` command).
+This is probably the mode you'll want to use. It's like the `python` shell or `irb`. The shell mode uses the `term` package provided by [`golang.org/x/term`](https://godoc.org/golang.org/x/term), which means it supports many of the shell features you know and love (like history, pasting, and the `exit` command).
 ```shell
 > 1+1
 2
